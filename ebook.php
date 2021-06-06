@@ -24,7 +24,7 @@
  <div class="row first-row">
 <button
   class="art-btn"
-  id="checkout-button-sku_HGlUQqzNfFa9Jn"
+  id=""
   role="link"
   type="button">
 <strong> Acheter le livre <br> 3€ TTC</strong>
@@ -34,21 +34,21 @@
 
 <script>
 (function() {
-  var stripe = Stripe('pk_live_8hee4meegOTN3FZRVHIQ8CKx00Wahs8V7f');
+  var stripe = Stripe('stripe-key');
 
-  var checkoutButton = document.getElementById('checkout-button-sku_HGlUQqzNfFa9Jn');
+  var checkoutButton = document.getElementById('btn-key');
   checkoutButton.addEventListener('click', function () {
     // When the customer clicks on the button, redirect
     // them to Checkout.
     stripe.redirectToCheckout({
-      lineItems: [{price: 'sku_HGlUQqzNfFa9Jn', quantity: 1}],
+      lineItems: [{price: 'key', quantity: 1}],
       mode: 'payment',
       // Do not rely on the redirect to the successUrl for fulfilling
       // purchases, customers may not always reach the success_url after
       // a successful payment.
       // Instead use one of the strategies described in
       // https://stripe.com/docs/payments/checkout/fulfillment
-      successUrl: window.location.protocol + '//passion-vin.net/page_tele_book.php',
+      successUrl: window.location.protocol + 'book-page',
       cancelUrl: window.location.protocol + '//passion-vin.net/ebook.php',
     })
     .then(function (result) {
